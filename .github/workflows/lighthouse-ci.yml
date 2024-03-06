@@ -1,0 +1,43 @@
+name: Lighthouse CI
+
+on: [pull_request]
+
+jobs:
+  lighthouse:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v1
+      with:
+        node-version: '14' # You can adjust this to match your project's Node.js version
+
+    - name: Install dependencies
+      run: yarn install
+
+    - name: Build Next.js Application
+      run: yarn build
+
+    - name: Start Next.js Server
+      run: yarn start &
+      env:
+        PORT: 3000
+
+    - name: Run Lighthouse CI
+      uses: treosh/lighthouse-ci-action@v8
+      with:
+        urls: |
+          http://localhost:3000/
+        temporaryPublicStorage: true
+
+    - name: Upload Lighthouse Artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: lighthouse-reports
+        path: '.lighthouseci'
+
+    # Optionally, you can add steps to comment on PR with Lighthouse scores
+    # - name: Comment Lighthouse Report on PR
+    #   ... 
