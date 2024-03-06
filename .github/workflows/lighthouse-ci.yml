@@ -20,23 +20,7 @@ jobs:
     - name: Build Next.js Application
       run: yarn build
 
-    - name: Start Next.js Server
-      run: yarn start &
-      env:
-        PORT: 3000
-
-    - name: Run Lighthouse CI
-      uses: treosh/lighthouse-ci-action@v2
-      with:
-        configPath: "./lighthouserc.json"
-        budgetPath: ./budget.json
-
-    - name: Upload Lighthouse Artifacts
-      uses: actions/upload-artifact@v1
-      with:
-        name: lighthouse-reports
-        path: '.lighthouseci'
-
-    # Optionally, you can add steps to comment on PR with Lighthouse scores
-    # - name: Comment Lighthouse Report on PR
-    #   ... 
+    - name: run Lighthouse CI
+      run: |
+          npm install -g @lhci/cli@0.13.x
+          lhci autorun
