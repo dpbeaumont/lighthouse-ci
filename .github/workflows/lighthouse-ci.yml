@@ -29,10 +29,10 @@ jobs:
       uses: treosh/lighthouse-ci-action@v2
       with:
         configPath: "./lighthouserc.json"
-        temporaryPublicStorage: true
+        budgetPath: ./.github/workflows/budget.json
 
     - name: Upload Lighthouse Artifacts
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v1
       with:
         name: lighthouse-reports
         path: '.lighthouseci'
