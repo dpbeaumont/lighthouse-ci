@@ -1,8 +1,5 @@
 {
     "ci": {
-      "url": ["http://localhost:3000/"],
-      "collect": {
-        "staticDistDir": "./public"
-      }
+      "url": ["http://localhost:3000/"]
     }
   }
