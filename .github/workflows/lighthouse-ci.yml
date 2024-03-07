@@ -32,4 +32,4 @@ jobs:
       if: ${{ success() }}
       run: |
         echo "Lighthouse output manifest:"
-        echo "${{ steps.lighthouse.outputs }}"
+        echo "${{ steps.lighthouse.outputs.lighthouseVersion }}"
