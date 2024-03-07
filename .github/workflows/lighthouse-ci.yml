@@ -14,13 +14,13 @@ jobs:
       with:
         node-version: '18.17.0'
 
-    - name: Install dependencies
-      run: yarn install
-
-    - name: Build Next.js Application
-      run: yarn build
+    - name: yarn install, build
+      run: |
+          yarn install
+          yarn run build
 
     - name: run Lighthouse CI
       run: |
           npm install -g @lhci/cli@0.13.x
-          lhci autorun
+          lhci autorun \
+          --config=./lighthouserc.json
