@@ -8,14 +8,14 @@ fs.readFile('.lighthouseci/assertion-results.json', 'utf8', (error, data) => {
   const results = JSON.parse(data);
 
   let markdown = "# Lighthouse Assertion Results\n\n";
-  markdown += "| Audit Item | Required Score | Expected (%) | Actual (%) | Outcome |\n";
-  markdown += "|------------|----------------|--------------|------------|---------|\n";
+  markdown += "| Audit Item | Expected (%) | Actual (%) | Outcome |\n";
+  markdown += "|------------|--------------|------------|---------|\n";
 
   results.forEach(item => {
     const expected = (parseFloat(item.expected) * 100).toFixed(2);
     const actual = (item.actual * 100).toFixed(2);
     const outcomeSymbol = item.passed ? '✅' : '❌';
-    markdown += `| ${item.auditProperty} | ${item.name} | ${expected} | ${actual} | ${outcomeSymbol} |\n`;
+    markdown += `| ${item.auditProperty} | ${expected} | ${actual} | ${outcomeSymbol} |\n`;
   });
 
   console.log(markdown);
