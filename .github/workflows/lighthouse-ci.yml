@@ -35,9 +35,3 @@ jobs:
       with:
         name: markdown-results
         path: assertion-results.md
-    
-    - name: Debug Lighthouse Output
-      if: ${{ success() }}
-      run: |
-        echo "Lighthouse output:"
-        echo "${{ steps.lighthouse.outputs.lighthouseOutput }}"
