@@ -22,7 +22,7 @@ jobs:
       run: |
         npm install -g @lhci/cli@0.13.x
         LHCI_OUTPUT=$(lhci autorun --config=./lighthouserc.json | grep 'storage.googleapis.com' | awk '{print $NF}')
-        echo "## Lighthouse CI Report URL:" >> $GITHUB_STEP_SUMMARY
+        echo "### Lighthouse CI Report URL:" >> $GITHUB_STEP_SUMMARY
         echo "$LHCI_OUTPUT" >> $GITHUB_STEP_SUMMARY
         
     - name: Display contents of assertion-results.json
