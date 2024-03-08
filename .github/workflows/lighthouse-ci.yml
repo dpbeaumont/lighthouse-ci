@@ -21,21 +21,14 @@ jobs:
       id: lighthouse
       run: |
         npm install -g @lhci/cli@0.13.x
-        output=$(lhci autorun --config=./lighthouserc.json)
-        echo "$output"
-        echo "::set-output name=lighthouseOutput::$output"
-
-    - name: List contents of .lighthouseci directory
-      if: ${{ success() }}
-      run: |
-        echo "Listing contents of .lighthouseci directory:"
-        ls -la .lighthouseci/
+        lhci autorun --config=./lighthouserc.json
         
     - name: Display contents of assertion-results.json
       run: cat .lighthouseci/assertion-results.json
 
-    - name: Convert JSON to Markdown
-      run: node lighthouseResultsToMarkdown.js
+    - name: Convert JSON to Markdown and Add to Job Summary
+      run: |
+        node convertToMarkdown.js >> $GITHUB_STEP_SUMMARY
 
     - name: Upload Markdown Results
       uses: actions/upload-artifact@v2
