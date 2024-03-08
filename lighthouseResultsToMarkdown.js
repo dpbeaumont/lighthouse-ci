@@ -7,7 +7,7 @@ fs.readFile('.lighthouseci/assertion-results.json', 'utf8', (error, data) => {
   }
   const results = JSON.parse(data);
 
-  let markdown = "## Lighthouse Assertion Results\n\n";
+  let markdown = "## Lighthouse Audit Results\n\n";
   markdown += "| Audit Item | Expected (%) | Actual (%) | Outcome |\n";
   markdown += "|------------|--------------|------------|---------|\n";
 
