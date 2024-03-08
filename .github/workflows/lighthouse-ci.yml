@@ -33,6 +33,15 @@ jobs:
         
     - name: Display contents of assertion-results.json
       run: cat .lighthouseci/assertion-results.json
+
+    - name: Convert JSON to Markdown
+      run: node lighthouseResultsToMarkdown.js
+
+    - name: Upload Markdown Results
+      uses: actions/upload-artifact@v2
+      with:
+        name: markdown-results
+        path: assertion-results.md
     
     - name: Debug Lighthouse Output
       if: ${{ success() }}
