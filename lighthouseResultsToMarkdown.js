@@ -8,18 +8,17 @@ fs.readFile('.lighthouseci/assertion-results.json', 'utf8', (err, data) => {
   const results = JSON.parse(data);
 
   let markdown = "# Lighthouse Assertion Results\n\n";
+  markdown += "| Audit Item | Required Score | Expected | Actual | Outcome |\n";
+  markdown += "|------------|----------------|----------|--------|---------|\n";
+
   results.forEach(item => {
-    markdown += `## ${item.auditProperty.toUpperCase()}\n`;
-    markdown += `- Name: ${item.name}\n`;
-    markdown += `- Expected: ${item.expected}\n`;
-    markdown += `- Actual: ${item.actual}\n`;
-    markdown += `- Passed: ${item.passed}\n\n`;
+    const outcome = item.passed ? 'Passed' : 'Failed';
+    markdown += `| ${item.auditProperty} | ${item.name} | ${item.expected} | ${item.actual} | ${outcome} |\n`;
   });
 
-  // Print the Markdown content to stdout
   console.log(markdown);
-
-  // Optionally, write to a file as well
+  
+  // This is for the artifacts.
   fs.writeFile('assertion-results.md', markdown, (err) => {
     if (err) {
       console.error("Error writing file:", err);
