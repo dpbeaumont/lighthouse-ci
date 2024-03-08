@@ -20,14 +20,15 @@ jobs:
     - name: run Lighthouse CI
       id: lighthouse
       run: |
-          npm install -g @lhci/cli@0.13.x
-          lhci autorun \
-          --config=./lighthouserc.json
+        npm install -g @lhci/cli@0.13.x
+        output=$(lhci autorun --config=./lighthouserc.json)
+        echo "$output"
+        echo "::set-output name=lighthouseOutput::$output"
       env:
-            LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
+        LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
     
     - name: Debug Lighthouse Output
       if: ${{ success() }}
       run: |
-        echo "Lighthouse output manifest:"
-        echo "${{ steps.lighthouse.outputs.lighthouseVersion }}"
+        echo "Lighthouse output:"
+        echo "${{ steps.lighthouse.outputs.lighthouseOutput }}"
