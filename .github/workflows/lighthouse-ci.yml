@@ -24,8 +24,6 @@ jobs:
         output=$(lhci autorun --config=./lighthouserc.json)
         echo "$output"
         echo "::set-output name=lighthouseOutput::$output"
-      env:
-        LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
 
     - name: List contents of .lighthouseci directory
       if: ${{ success() }}
