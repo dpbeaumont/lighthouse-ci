@@ -21,9 +21,9 @@ jobs:
       id: lighthouse
       run: |
         npm install -g @lhci/cli@0.13.x
-        LHCI_OUTPUT=$(lhci autorun --config=./lighthouserc.json | grep 'storage.googleapis.com')
-        echo "Captured Lighthouse CI Output:"
-  
+        LHCI_OUTPUT=$(lhci autorun --config=./lighthouserc.json | grep 'storage.googleapis.com' | awk '{print $NF}')
+        echo "Lighthouse CI Report URL:"
+        echo "$LHCI_OUTPUT"
         
     - name: Display contents of assertion-results.json
       run: cat .lighthouseci/assertion-results.json
