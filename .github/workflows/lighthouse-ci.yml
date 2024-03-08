@@ -32,6 +32,9 @@ jobs:
       run: |
         echo "Listing contents of .lighthouseci directory:"
         ls -la .lighthouseci/
+        
+    - name: Display contents of assertion-results.json
+      run: cat .lighthouseci/assertion-results.json
     
     - name: Debug Lighthouse Output
       if: ${{ success() }}
