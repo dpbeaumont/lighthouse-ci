@@ -17,13 +17,13 @@ jobs:
           yarn install
           yarn run build
 
-    - name: run Lighthouse CI
+    - name: Run Lighthouse CI, Extract & Apply Url To Step Summary
       id: lighthouse
       run: |
         npm install -g @lhci/cli@0.13.x
         LHCI_OUTPUT=$(lhci autorun --config=./lighthouserc.json | grep 'storage.googleapis.com' | awk '{print $NF}')
-        echo "Lighthouse CI Report URL:"
-        echo "$LHCI_OUTPUT"
+        echo "## Lighthouse CI Report URL:" >> $GITHUB_STEP_SUMMARY
+        echo "$LHCI_OUTPUT" >> $GITHUB_STEP_SUMMARY
         
     - name: Display contents of assertion-results.json
       run: cat .lighthouseci/assertion-results.json
