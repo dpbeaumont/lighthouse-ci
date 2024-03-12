@@ -22,7 +22,7 @@ fs.readFile('.lighthouseci/assertion-results.json', 'utf8', (error, data) => {
   });
 
   const averageActualPercent = (actualPercentTotal / results.length).toFixed(2);
-  markdown += `####Average Current Percentage: ${averageActualPercent}%\n`;
+  markdown += `\n\n#### Average Current Percentage: ${averageActualPercent}%\n`;
 
   console.log(markdown);
 });
