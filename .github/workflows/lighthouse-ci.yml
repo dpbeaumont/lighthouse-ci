@@ -21,7 +21,7 @@ jobs:
       id: lighthouse
       run: |
         npm install -g @lhci/cli@0.13.x
-        LHCI_OUTPUT=$(lhci autorun --config=./lighthouse/lighthouserc.yml | grep 'storage.googleapis.com' | awk '{print $NF}')
+        LHCI_OUTPUT=$(lhci autorun --config=./lighthouse/lighthouserc.yml | grep '.html' | awk '{print $NF}')
         echo "### Lighthouse CI Report URL:" >> $GITHUB_STEP_SUMMARY
         echo "$LHCI_OUTPUT" >> $GITHUB_STEP_SUMMARY
         
