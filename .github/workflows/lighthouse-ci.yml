@@ -21,7 +21,7 @@ jobs:
       id: lighthouse
       run: |
         npm install -g @lhci/cli@0.13.x
-        LHCI_OUTPUT=$(lhci autorun --config=./lighthouserc.json | grep 'storage.googleapis.com' | awk '{print $NF}')
+        LHCI_OUTPUT=$(lhci autorun --config=./lighthouse/lighthouserc.yml | grep 'storage.googleapis.com' | awk '{print $NF}')
         echo "### Lighthouse CI Report URL:" >> $GITHUB_STEP_SUMMARY
         echo "$LHCI_OUTPUT" >> $GITHUB_STEP_SUMMARY
         
@@ -30,7 +30,7 @@ jobs:
 
     - name: Convert JSON to Markdown and Add to Job Summary
       run: |
-        node lighthouseResultsToMarkdown.js >> $GITHUB_STEP_SUMMARY
+        node ./lighthouse/lighthouseResultsToMarkdown.js >> $GITHUB_STEP_SUMMARY
 
     - name: Upload Markdown Results
       uses: actions/upload-artifact@v2
