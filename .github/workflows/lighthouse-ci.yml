@@ -25,9 +25,6 @@ jobs:
         echo "### Lighthouse CI Report URL:" >> $GITHUB_STEP_SUMMARY
         echo "$LHCI_OUTPUT" >> $GITHUB_STEP_SUMMARY
         
-    - name: Display contents of assertion-results.json
-      run: cat .lighthouseci/assertion-results.json
-
     - name: Convert JSON to Markdown and Add to Job Summary
       run: |
         node ./lighthouse/lighthouseResultsToMarkdown.js >> $GITHUB_STEP_SUMMARY
