@@ -32,8 +32,9 @@ jobs:
       run: |
         node ./lighthouse/lighthouseResultsToMarkdown.js >> $GITHUB_STEP_SUMMARY
 
-    - name: Upload Markdown Results
-      uses: actions/upload-artifact@v2
+    - name: Archive Lighthouse Results
+      uses: actions/upload-artifact@v3
+      if: always()
       with:
-        name: markdown-results
-        path: assertion-results.md
+        name: lighthouse-results
+        path: lighthouseci/*
