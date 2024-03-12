@@ -8,7 +8,7 @@ fs.readFile('.lighthouseci/assertion-results.json', 'utf8', (error, data) => {
   const results = JSON.parse(data);
 
   let markdown = "## Lighthouse Audit Results\n\n";
-  markdown += "| Audit Item | Expected (%) | Actual (%) | Outcome |\n";
+  markdown += "| Audit Item | Expected (%) | Current (%) | Outcome |\n";
   markdown += "|------------|--------------|------------|---------|\n";
 
   let actualPercentTotal = 0;
@@ -22,8 +22,7 @@ fs.readFile('.lighthouseci/assertion-results.json', 'utf8', (error, data) => {
   });
 
   const averageActualPercent = (actualPercentTotal / results.length).toFixed(2);
-  markdown += `\n## Average Actual Percentage\n\n`;
-  markdown += `The average actual percentage is ${averageActualPercent}%\n`;
+  markdown += `####Average Current Percentage: ${averageActualPercent}%\n`;
 
   console.log(markdown);
 });
