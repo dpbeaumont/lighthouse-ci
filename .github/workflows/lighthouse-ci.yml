@@ -16,7 +16,7 @@ jobs:
           yarn install
           yarn run build
 
-    - name: Run Lighthouse CI, Extract & Apply Url To Step Summary
+    - name: Run Lighthouse CI
       run: |
         npm install -g @lhci/cli@0.13.x
         lhci autorun --config=./lighthouse/lighthouserc.yml
