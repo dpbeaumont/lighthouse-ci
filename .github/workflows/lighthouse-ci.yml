@@ -1,5 +1,4 @@
 name: Lighthouse CI
-using: 'node20'
 on: [workflow_dispatch, pull_request]
 
 jobs:
