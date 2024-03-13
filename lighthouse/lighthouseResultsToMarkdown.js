@@ -1,6 +1,6 @@
 const fs = require('fs');
 
-fs.readFile('.lighthouseci/assertion-results.json', 'utf8', (error, data) => {
+fs.readFile('./lighthouseci/assertion-results.json', 'utf8', (error, data) => {
   if (error) {
     console.error("Error reading file:", error);
     return;
