@@ -25,8 +25,8 @@ fs.readFile('.lighthouseci/assertion-results.json', 'utf8', (error, data) => {
 
   const averageActualPercent = (actualPercentTotal / results.length).toFixed(2);
   const averageExpectedPercent = (expectedPercentTotal / results.length).toFixed(2);
-  markdown += `\n\n#### Current Average Percentage: ${averageActualPercent}%\n`;
-  markdown += `#### Target Average Percentage: ${averageExpectedPercent}%\n`;
+  markdown += `\n\n#### Current Average Percentage: ${averageActualPercent}%`;
+  markdown += `#### Target Average Percentage: ${averageExpectedPercent}%`;
 
   console.log(markdown);
 });
