@@ -11,10 +11,6 @@ on:
         description: "Node.js Version"
         required: false
         type: string
-      build-script:
-        description: "Build script command"
-        required: false
-        type: string
       lhci-version:
         description: "Lighthouse CI CLI Version"
         required: false
@@ -31,6 +27,5 @@ jobs:
     with:
       working-directory: ${{ github.event.inputs.working-directory }}
       node-version: ${{ github.event.inputs.node-version }}
-      build-script: ${{ github.event.inputs.build-script }}
       lhci-version: ${{ github.event.inputs.lhci-version }}
       lighthouserc-path: ${{ github.event.inputs.lighthouserc-path }}
