@@ -27,7 +27,7 @@ on:
 jobs:
   lighthouse-ci:
     name: 🌟 Lighthouse CI Audit
-    uses: dpbeaumont/centralized-workflows/.github/workflows/lighthouse-ci-reusable.yml@main
+    uses: dpbeaumont/centralized-workflows/.github/workflows/lighthouse-ci.yml@main
     with:
       working-directory: ${{ github.event.inputs.working-directory }}
       node-version: ${{ github.event.inputs.node-version }}
