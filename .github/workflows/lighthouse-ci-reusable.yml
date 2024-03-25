@@ -26,7 +26,7 @@ on:
 
 jobs:
   lighthouse-ci:
-    name: 🌟 Lighthouse CI Audit
+    name: Lighthouse CI Audit
     uses: dpbeaumont/centralized-workflows/.github/workflows/lighthouse-ci-workflow.yml@main
     with:
       working-directory: ${{ github.event.inputs.working-directory }}
