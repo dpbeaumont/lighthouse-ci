@@ -19,6 +19,10 @@ on:
         description: "Path to lighthouserc.yml"
         required: true
         type: string
+      results-summary-script:
+        description: "Path to the results summary script"
+        required: true
+        type: string
 
 jobs:
   lighthouse-ci:
@@ -29,3 +33,4 @@ jobs:
       node-version: ${{ github.event.inputs.node-version }}
       lhci-version: ${{ github.event.inputs.lhci-version }}
       lighthouserc-path: ${{ github.event.inputs.lighthouserc-path }}
+      results-summary-script: ${{ github.event.inputs.results-summary-script }}
