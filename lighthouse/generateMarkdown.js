@@ -18,6 +18,5 @@ fs.readFile('.lighthouseci/assertion-results.json', 'utf8', (error, data) => {
     markdown += `| ${item.auditProperty} | ${expected} | ${actual} | ${outcomeSymbol} |\n`;
   });
 
-  markdown += `\n\n#### Application Average (%): ${averageActualPercent}%\n`;
   console.log(markdown);
 });
