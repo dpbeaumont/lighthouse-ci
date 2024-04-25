@@ -1,1 +1,1 @@
-# lighthouse-ci-workflow Documentation
+# lighthouse-ci-workflow Documentation Readme
