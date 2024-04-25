@@ -33,8 +33,8 @@ jobs:
     name: 🌄 Lighthouse CI Audit
     uses: dpbeaumont/centralized-workflows/.github/workflows/lighthouse-ci-workflow.yml@main
     with:
-      working-directory: ${{ github.event.inputs.working-directory }}
-      node-version: ${{ github.event.inputs.node-version }}
-      lhci-version: ${{ github.event.inputs.lhci-version }}
-      lighthouserc-path: ${{ github.event.inputs.lighthouserc-path }}
-      results-summary-script: ${{ github.event.inputs.results-summary-script }}
+      working-directory: ${{ github.event.inputs.working-directory || '.' }}
+      node-version: ${{ github.event.inputs.node-version || '20.x' }}
+      lhci-version: ${{ github.event.inputs.lhci-version || '0.13.x' }}
+      lighthouserc-path: ${{ github.event.inputs.lighthouserc-path || 'lighthouse/lighthouserc.yml' }}
+      results-summary-script: ${{ github.event.inputs.results-summary-script || 'lighthouse/generateMarkdown.js' }}
