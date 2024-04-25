@@ -1,1 +1,1 @@
-# lighthouse-ci-workflow Documentation Test
+# lighthouse-ci-workflow Documentation
