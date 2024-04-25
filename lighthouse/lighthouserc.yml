@@ -1,0 +1,33 @@
+ci:
+  collect:
+    numberOfRuns: 2
+    startServerCommand: yarn start
+    url:
+      - http://localhost:3000
+  assert:
+    includePassedAssertions: true
+    assertions:
+      "categories:performance":
+        - warn
+        - minScore: 1.0
+      "categories:accessibility":
+        - warn
+        - minScore: 0.99
+      "categories:best-practices":
+        - warn
+        - minScore: 0.95
+      "categories:seo":
+        - warn
+        - minScore: 1.0
+  upload:
+    target: filesystem
+    outputDir: ./lighthouseci
+  settings:
+    chromeFlags:
+      - --ignore-certificate-errors
+    preset: desktop
+    onlyCategories:
+      - performance
+      - accessibility
+      - best-practices
+      - seo
