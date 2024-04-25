@@ -1,4 +1,4 @@
-name: Lighthouse CI Reusable Workflow
+name: Lighthouse CI Workflow
 
 on:
   workflow_dispatch:
