@@ -1,6 +1,9 @@
 name: Lighthouse CI Workflow
 
 on:
+  pull_request:
+    branches:
+      - main
   workflow_dispatch:
     inputs:
       working-directory:
