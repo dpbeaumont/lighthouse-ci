@@ -20,6 +20,7 @@ on:
         type: string
       lighthouserc-path:
         description: "Path to lighthouserc.yml"
+        default: "lighthouse/lighthouserc.yml"
         required: true
         type: string
       results-summary-script:
